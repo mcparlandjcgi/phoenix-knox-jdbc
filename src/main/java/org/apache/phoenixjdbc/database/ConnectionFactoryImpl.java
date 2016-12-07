@@ -12,30 +12,26 @@
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package org.apache.knox.phoenix;
+package org.apache.phoenixjdbc.database;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.annotation.PropertySources;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import org.apache.phoenixjdbc.config.PhoenixProperties;
 
 /**
- * A configuration file for Knox/Phoenix.
+ * A .
  *
  * @author mcparlandj
  *
  */
-@Configuration
-@PropertySources({@PropertySource("classpath:application.properties"),
-    @PropertySource("file:///usr/knox_phoenix_jdbc/override.properties")})
-public class KnoxPhoenixConfiguration {
+public class ConnectionFactoryImpl {
 
-  /**
-   * @return a row mapper to use.
-   */
-  @Bean
-  public WebStatRowMapper testRowMapper() {
-    return new WebStatRowMapper();
+  public Connection getConnection(PhoenixProperties phoenixProperties) throws SQLException, ClassNotFoundException {
+    Class.forName(phoenixProperties.getDriverName());
+    return DriverManager.getConnection(phoenixProperties.getJdbcUrl());
+
   }
 
 }
