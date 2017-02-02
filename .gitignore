@@ -19,3 +19,7 @@ target
 .settings
 .project
 
+# IntelliJ IDEA
+.idea
+*.iml
+
