@@ -29,7 +29,7 @@ import java.util.Properties;
  */
 public class PhoenixProperties {
 
-  private static final String PROPERTIES_FILE = "file:///usr/phoenixjdbc/config.properties";
+  private static final String PROPERTIES_FILE = "/usr/phoenixjdbc/config.properties";
 
   private static final String JDBC_URL_PROP = "jdbc.url";
   private static final String SQL_STATEMENT_PROP = "sql.statement";
